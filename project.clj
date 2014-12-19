@@ -13,11 +13,14 @@
                  [prismatic/om-tools "0.3.6"]
                  [ring/ring-core "1.2.2"]
                  [ring/ring-jetty-adapter "1.2.2"]
-                 [compojure "1.3.1"]]
+                 [compojure "1.3.1"]
+                 [environ "1.0.0"]]
 
   :source-paths ["src"]
+
   :plugins [[lein-cljsbuild "1.0.3"]
-            [lein-ring "0.8.10"]]
+            [lein-ring "0.8.10"]
+            [lein-environ "1.0.0"]]
 
 
   :profiles {:dev {:dependencies [[figwheel "0.1.5-SNAPSHOT"]]
@@ -28,23 +31,25 @@
                               :ring-handler periwinkle-dreams.server.core/handler
                               }
 
+                   :env {:is-dev false}
+
                    :plugins [[lein-figwheel "0.1.5-SNAPSHOT"]]}}
 
   :ring {:handler periwinkle-dreams.server.core/handler :port 8081 }
 
   :cljsbuild {
               :builds [{:id "dev"
-                        :source-paths ["src/client"]
+                        :source-paths ["src/periwinkle_dreams/client"]
                         :compiler {
-                                   :output-to "out/periwinkle-dreams.js"
-                                   :output-dir "out"
+                                   :output-to "resources/public/scripts/out/periwinkle-dreams.js"
+                                   :output-dir "resources/public/scripts/out"
                                    :optimizations :none
                                    :source-map true}}
                        {:id "packed"
-                        :source-paths ["src/client"]
+                        :source-paths ["src/periwinkle_dreams/client"]
                         :compiler {
-                                   :output-to "out-min/periwinkle-dreams.min.js"
-                                   :output-dir "out-min"
+                                   :output-to "resources/public/scripts/periwinkle-dreams.min.js"
+                                   :output-dir "resources/public/scripts/out-min"
                                    :optimizations :advanced
                                    :preamble ["react_pixi/react-pixi.min.js"]
                                    :externs ["react_pixi/react-pixi.js"]
