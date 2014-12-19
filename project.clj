@@ -31,7 +31,7 @@
                               :ring-handler periwinkle-dreams.server.core/handler
                               }
 
-                   :env {:is-dev false}
+                   :env {:is-dev true}
 
                    :plugins [[lein-figwheel "0.1.5-SNAPSHOT"]]}}
 
