@@ -14,7 +14,8 @@
                  [ring/ring-core "1.2.2"]
                  [ring/ring-jetty-adapter "1.2.2"]
                  [compojure "1.3.1"]
-                 [environ "1.0.0"]]
+                 [environ "1.0.0"]
+                 [figwheel "0.1.5-SNAPSHOT"]]
 
   :source-paths ["src"]
 
@@ -23,8 +24,7 @@
             [lein-environ "1.0.0"]]
 
 
-  :profiles {:dev {:dependencies [[figwheel "0.1.5-SNAPSHOT"]]
-                   :source-paths ["src" "dev-src"]
+  :profiles {:dev {:source-paths ["src"]
                    :figwheel {
                               :http-server-root "public"
                               :server-port 8081
